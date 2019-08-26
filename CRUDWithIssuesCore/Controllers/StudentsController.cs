@@ -15,6 +15,14 @@ namespace CRUDWithIssuesCore.Controllers
         {
             context = dbContext;
         }
+
+        public async Task<IActionResult> Details(int id)
+        {
+            Student stu = await StudentDb.GetStudent(context, id);
+            return View(stu);
+        }
+
+
         [HttpGet]
         public async Task<IActionResult> Index()
         {
@@ -82,5 +90,7 @@ namespace CRUDWithIssuesCore.Controllers
         
             return RedirectToAction("Index");
         }
+
+
     }
 }
